@@ -40,8 +40,8 @@ public class AlarmsFragment extends Fragment {
 
     private TextView noDataTextView;
 
-    private String[] FROM = {"time", "request_code"};
-    private int[] TO = {R.id.custom_text};
+    private final String[] FROM = {"time", "request_code"};
+    private final int[] TO = {R.id.custom_text};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

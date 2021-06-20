@@ -36,14 +36,13 @@ public class TimerFragment extends Fragment {
 
     private TextView timerText, colonText;
     private EditText minuteEdit, secondEdit;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss", Locale.JAPAN);
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss", Locale.JAPAN);
     private Button startButton, stopButton;
     private ProgressBar progressBar;
 
     private boolean cancel_flag = false, reset_flag = true;
     private long countNumber, interval, millisUntilFinished_main;
-    private long[] val = {0};
-   // private int debug_count = 0;
+    private final long[] val = {0};
 
     private CountDown countDown;
 

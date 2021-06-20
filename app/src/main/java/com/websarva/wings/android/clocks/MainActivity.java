@@ -4,6 +4,7 @@ import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,8 +23,6 @@ import com.websarva.wings.android.clocks.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +31,16 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        SecurityCheckClass scc = new SecurityCheckClass(this);
+        if (scc.root_Check() || scc.checkRunningProcesses()){
+            SecurityDialogFragment.RootCheckDialog rcd = new SecurityDialogFragment.RootCheckDialog();
+            rcd.show(getSupportFragmentManager(), "RootFragment");
+        }else if (scc.isDebuggable(this) || scc.detectDebugger()){
+            SecurityDialogFragment.DebugCheckDialog dcd = new SecurityDialogFragment.DebugCheckDialog();
+            dcd.show(getSupportFragmentManager(), "isDebuggable");
+        }
+
+        com.websarva.wings.android.clocks.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
