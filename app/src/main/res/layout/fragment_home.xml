@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/now_area_time"
+        android:textSize="25sp"
+        android:gravity="center"/>
+
+    <TextClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:format24Hour="HH:mm:ss"
+        android:format12Hour="hh:mm:ss" />
+
+    <TextClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:format24Hour="yyyy/MM/dd"
+        android:format12Hour="yyyy/MM/dd" />
+</LinearLayout>

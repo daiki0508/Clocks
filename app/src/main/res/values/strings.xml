@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Clocks</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_stopwatch">ストップウォッチ</string>
+    <string name="title_timer">タイマー</string>
+    <string name="title_alarms">アラーム</string>
+    <string name="now_area_time">現地時間</string>
+    <string name="zero">00:00.00</string>
+    <string name="zero_time">00</string>
+    <string name="colon">:</string>
+    <string name="start">開始</string>
+    <string name="rap">ラップ</string>
+    <string name="cancel">一時停止</string>
+    <string name="restart">再開</string>
+    <string name="reset">リセット</string>
+    <string name="stop">キャンセル</string>
+    <string name="notification_channel_name">タイマーサービス通知</string>
+    <string name="notification_alarm_channel_name">アラームサービス通知</string>
+    <string name="notification_description_timer">設定した時間が経過しました</string>
+    <string name="no_time_data">設定されたアラームがありません</string>
+    <string name="title_save">保存</string>
+    <string name="time">時間</string>
+    <string name="default_time">00:00</string>
+    <string name="notification_description_alarms">設定した時間になりました</string>
+    <string name="title_delete">削除</string>
+    <string name="title_settings">設定</string>
+    <string name="about_app">アプリについて</string>
+    <string name="description_darkMode">ダークモードへの切り替え</string>
+</resources>
