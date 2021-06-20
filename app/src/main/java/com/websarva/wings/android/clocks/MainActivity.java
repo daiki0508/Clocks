@@ -38,20 +38,20 @@ public class MainActivity extends AppCompatActivity {
         }else if (scc.isDebuggable(this) || scc.detectDebugger()){
             SecurityDialogFragment.DebugCheckDialog dcd = new SecurityDialogFragment.DebugCheckDialog();
             dcd.show(getSupportFragmentManager(), "isDebuggable");
+        }else {
+            com.websarva.wings.android.clocks.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+            setContentView(binding.getRoot());
+
+            BottomNavigationView navView = findViewById(R.id.nav_view);
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.navigation_home, R.id.navigation_stopwatch, R.id.navigation_timer, R.id.navigation_alarms)
+                    .build();
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+            NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+            NavigationUI.setupWithNavController(binding.navView, navController);
         }
-
-        com.websarva.wings.android.clocks.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_stopwatch, R.id.navigation_timer, R.id.navigation_alarms)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
     private boolean checkNightMode(){

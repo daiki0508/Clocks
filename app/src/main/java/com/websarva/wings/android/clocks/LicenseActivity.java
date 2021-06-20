@@ -33,14 +33,23 @@ public class LicenseActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
 
-        WebView licenseWebView = findViewById(R.id.license_webview);
+        SecurityCheckClass scc = new SecurityCheckClass(this);
+        if (scc.root_Check() || scc.checkRunningProcesses()){
+            SecurityDialogFragment.RootCheckDialog rcd = new SecurityDialogFragment.RootCheckDialog();
+            rcd.show(getSupportFragmentManager(), "RootFragment");
+        }else if (scc.isDebuggable(this) || scc.detectDebugger()){
+            SecurityDialogFragment.DebugCheckDialog dcd = new SecurityDialogFragment.DebugCheckDialog();
+            dcd.show(getSupportFragmentManager(), "isDebuggable");
+        }else {
+            WebView licenseWebView = findViewById(R.id.license_webview);
 
-        licenseWebView.getSettings().setAllowContentAccess(false);
-        licenseWebView.getSettings().setAllowFileAccess(false);
-        licenseWebView.getSettings().setAllowFileAccessFromFileURLs(false);
-        licenseWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
+            licenseWebView.getSettings().setAllowContentAccess(false);
+            licenseWebView.getSettings().setAllowFileAccess(false);
+            licenseWebView.getSettings().setAllowFileAccessFromFileURLs(false);
+            licenseWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
 
-        licenseWebView.loadUrl(decrypt());
+            licenseWebView.loadUrl(decrypt());
+        }
     }
 
     private String decrypt(){
